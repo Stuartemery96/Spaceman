@@ -14,3 +14,5 @@ Save the astronaut by guessing the secret word!
 * Canva
 
 # Getting Started
+
+[Play Game](https://stuartemery96.github.io/Spaceman/)
