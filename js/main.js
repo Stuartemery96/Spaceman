@@ -6,7 +6,10 @@ const MSG_LOOKUP = {
   'win': 'YOU MADE IT!',
   'lose': 'YOU MISSED YOUR FLIGHT!',
 }
-
+const sounds = {
+  loser: 'sounds/sad.wav',
+  winner: 'sounds/rocketsnd.wav',
+}
 const IMAGES = {
   sadImg: 'imgs/sad.png',
   man: 'imgs/astronaut.png',
@@ -28,6 +31,7 @@ const msgEl = document.getElementById('msg');
 const playAgnBtn = document.getElementById('ply-agn');
 const manImg = document.getElementById('astronaut');
 const shipImg = document.getElementById('rckt');
+const player = new Audio();
 
 /*----- event listeners -----*/
 playAgnBtn.addEventListener('click', init);
@@ -79,11 +83,13 @@ function getResult() {
   if (guessedWord === secretWord) {
     outcome = 'win';
     manImg.style.visibility = 'hidden';
+    playSound('winner');
     attempts = 0;
   } else if (attempts > 0 && guessedWord !== secretWord) {
     outcome = null;
   } else {
     outcome = 'lose';
+    playSound('loser')
   }
 }
 
@@ -107,4 +113,10 @@ function renderManImg() {
 
 function renderShip() {
   shipImg.src = `imgs/rocket/${attempts}.png`;
+}
+
+function playSound(name) {
+  player.src = sounds[name];
+  player.play();
+  player.volume = 0.5;
 }
