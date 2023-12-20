@@ -45,7 +45,7 @@ body {
   align-self: flex-end;
   height: 3rem;
   margin-bottom: 0;
-  font-size: 5vmax;
+  font-size: 4vmax;
 }
 
 #guesses-countdown {
@@ -75,7 +75,31 @@ body {
   align-self: center;
   justify-self: center;
   height: 10vmax;
+  animation: floating 3s ease-in-out infinite;
 }
+
+.floating {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-bottom: 2rem;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+
+  50% {
+    transform: translate(0, 15px);
+  }
+
+  100% {
+    transform: translate(0, -0px);
+  }
+}
+
 
 #rckt-imgs {
   grid-column-start: 1;
