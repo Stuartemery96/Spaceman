@@ -8,15 +8,8 @@ const MSG_LOOKUP = {
 }
 
 const IMAGES = {
-  img1: 'imgs/rocket/rocket-1.png',
-  img2: 'imgs/rocket/rocket-2.png',
-  img3: 'imgs/rocket/rocket-3.png',
-  img4: 'imgs/rocket/rocket-4.png',
-  img5: 'imgs/rocket/rocket-5.png',
-  img6: 'imgs/rocket/rocket-6.png',
-  img7: 'imgs/rocket/rocket-7.png',
   sadImg: 'imgs/sad.png',
-  man: 'imgs/astronaut',
+  man: 'imgs/astronaut.png',
 }
 
 /*----- state variables -----*/
@@ -32,9 +25,9 @@ const attemptsEl = document.getElementById('cntdwn')
 const guessedLettersEl = document.getElementById('random-word');
 const incorrectGuessesEl = document.getElementById('inc-guesses');
 const msgEl = document.getElementById('msg');
-let manImg = document.getElementById('astronaut');
-let shipImg = document.getElementById('rckt');
-const playAgnBtn = document.getElementById('ply-agn')
+const playAgnBtn = document.getElementById('ply-agn');
+const manImg = document.getElementById('astronaut');
+const shipImg = document.getElementById('rckt');
 
 /*----- event listeners -----*/
 playAgnBtn.addEventListener('click', init);
@@ -58,17 +51,18 @@ function render() {
   attemptsEl.innerHTML = attempts;
   incorrectGuessesEl.innerHTML = incorrectGuesses.join('');
   renderMsg();
-  renderImg();
+  renderManImg();
   renderControls();
+  renderShip();
 }
 
 function handleGuess(keyPushed) {
   const secretWordArr = secretWord.split('');
   const letter = secretWordArr.find((element) => element === keyPushed.key);
-  if (letter === undefined && !incorrectGuesses.includes(keyPushed.key)) {
+  if (letter === undefined && !incorrectGuesses.includes(keyPushed.key) && outcome === null) {
     incorrectGuesses.push(keyPushed.key);
     attempts--;
-  } else {
+  } else if (outcome === null) {
     for (let i = 0; i < secretWordArr.length; i++) {
       if (secretWordArr[i] === keyPushed.key) {
         guessedLetters[i] = keyPushed.key;
@@ -85,6 +79,7 @@ function getResult() {
   if (guessedWord === secretWord) {
     outcome = 'win';
     manImg.style.visibility = 'hidden';
+    attempts = 0;
   } else if (attempts > 0 && guessedWord !== secretWord) {
     outcome = null;
   } else {
@@ -102,6 +97,14 @@ function renderControls() {
   playAgnBtn.style.visibility = outcome === null ? 'hidden' : 'visible';
 }
 
-function renderImg() {
-  // manImg.src = IMAGES['man'];
+function renderManImg() {
+  if (outcome === 'lose') {
+    manImg.src = IMAGES['sadImg'];
+  } else {
+    manImg.src = IMAGES['man'];
+  }
+}
+
+function renderShip() {
+  shipImg.src = `imgs/rocket/${attempts}.png`;
 }

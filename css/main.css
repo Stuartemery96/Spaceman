@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url(/imgs/—Pngtree—game\ red\ outer\ space_2444899.jpg);
+  background-image: url(/imgs/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   display: grid;
@@ -74,6 +74,7 @@ body {
   grid-row-start: 5;
   align-self: center;
   justify-self: center;
+  height: 10vmax;
 }
 
 #rckt-imgs {
