@@ -29,11 +29,13 @@ body {
 }
 
 #msg {
+  display: inline-flexbox;
   color: #97E658;
   grid-column-start: 2;
   grid-row-start: 2;
   justify-self: center;
   align-self: center;
+  text-align: center;
   font-size: 3vmax;
 }
 

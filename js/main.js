@@ -93,10 +93,9 @@ function getResult() {
   }
 }
 
-
 function renderMsg() {
   msgEl.style.visibility = outcome === null ? 'hidden' : 'visible';
-  msgEl.innerHTML = MSG_LOOKUP[outcome];
+  msgEl.innerHTML = MSG_LOOKUP[outcome] + `<br>The correct word was ${secretWord}`;
 }
 
 function renderControls() {
