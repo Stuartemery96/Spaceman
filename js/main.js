@@ -82,7 +82,6 @@ function getResult() {
 
   if (guessedWord === secretWord) {
     outcome = 'win';
-    manImg.style.visibility = 'hidden';
     playSound('winner');
     attempts = 0;
   } else if (attempts > 0 && guessedWord !== secretWord) {
@@ -103,10 +102,11 @@ function renderControls() {
 }
 
 function renderManImg() {
-  if (outcome === 'lose') {
-    manImg.src = IMAGES['sadImg'];
-  } else {
+  manImg.style.visibility = outcome === 'win' ? 'hidden' : 'visible';
+  if (outcome === null) {
     manImg.src = IMAGES['man'];
+  } else if (outcome === 'lose') {
+    manImg.src = IMAGES['sadImg'];
   }
 }
 
