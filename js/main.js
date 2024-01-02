@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const MAX_ATTEMPTS = 7;
-const WORDS = ['space', 'earth', 'star', 'nebula', 'asteroid', 'comet', 'constellation', 'astornaut', 'planet', 'saturn', 'jupiter', 'moon', 'pluto', 'cosmos', 'constellation'];
+const WORDS = ['space', 'earth', 'star', 'nebula', 'asteroid', 'comet', 'constellation', 'astronaut', 'planet', 'saturn', 'jupiter', 'moon', 'pluto', 'cosmos', 'constellation'];
 const MSG_LOOKUP = {
   null: '',
   'win': 'YOU MADE IT!',
@@ -88,7 +88,7 @@ function getResult() {
     outcome = null;
   } else {
     outcome = 'lose';
-    playSound('loser')
+    playSound('loser');
   }
 }
 
